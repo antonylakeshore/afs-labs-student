@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: db-deployment
   namespace: ajoseph
   labels:
-    app: app
+    app: db
 spec:
   replicas: 1
   strategy:
@@ -12,17 +12,17 @@ spec:
   minReadySeconds: 20
   selector:
     matchLabels:
-      app: app
+      app: db
   template:
     metadata:
       labels:
-        app: app
+        app: db
     spec:
       containers:
       - envFrom:
         - secretRef:
             name: db-secret
-        name: app-deployment
-        image: harbor.dev.afsmtddso.com/aj-harbor-project/app:971c881-42873ce
+        name: db-deployment
+        image: harbor.dev.afsmtddso.com/aj-harbor-project/db@sha256:48434beaf17af242f792cf56fac4657d9ce05c19fdfcf2a11fac2591a61e6f41
         ports:
-        - containerPort: 5000
+        - containerPort: 5432
