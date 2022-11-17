@@ -1,4 +1,4 @@
---TEST lab 6
+--TEST lab 6 test 8
 -- PostgreSQL database dump
 --
 
